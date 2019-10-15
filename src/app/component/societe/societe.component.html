@@ -1,0 +1,130 @@
+<nav class="row" style="background-color: #e3f2fd; margin-bottom: 7px;">
+  <div class="col-md-2">
+    <div class="dropdown" style="position:relative;z-index:100;">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" style="border:none; background-color:#e3f2fd; color: mediumblue;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Comptabilité Sipem
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="position:relative;z-index:100;">
+      <li><a class="nav-item nav-link" href="#" routerLink="/all">Toutes les transactions</a></li>
+      <li><a class="nav-item nav-link" id="acti" href="#" routerLink="/societe">Tri par Societe</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/date">Tri par Date</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/ref">Tri par Reference</a></li>
+      </ul>
+      </div> 
+  </div>
+  <div class="col-md-2"> 
+    <div class="dropdown" style="position:relative;z-index:90;">
+      <button class="btn btn-default dropdown-toggle" style="border:none; background-color:#e3f2fd;  color:#42a5f5;" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Comptabilité Fintek
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="position:relative;z-index:90;">
+      <li><a class="nav-item nav-link" href="#" routerLink="/allfintek">Toutes les transactions</a></li>
+      <li><a class="nav-item nav-link" href="#" routerLink="/societefintek">Tri par Societe</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/datefintek">Tri par Date</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/reffintek">Tri par Reference</a></li>
+      </ul>
+      </div> 
+  </div>  
+  <div class="col-md-2"> 
+    <div class="dropdown" style="position:relative;z-index:80;">
+      <button class="btn btn-default dropdown-toggle" style="border:none; background-color:#e3f2fd;  color: #42a5f5;" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Comptabilité Jirama
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" style="position:relative;z-index:80;">
+      <li><a class="nav-item nav-link"  href="#" routerLink="/alljirama">Toutes les transactions</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/datejirama">Tri par Date</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/refjirama">Tri par Reference</a></li>
+      </ul>
+      </div>  
+   </div>
+</nav>
+   <nav class="row" style="background-color: #eceff1; margin-right: 1px; margin-left: 1px;">
+  <h6 class="col-xl-3 col-md-3 col-sm-3 col-xs-6">Tri par Societe</h6><select class="col-xl-2 col-md-2 col-sm-3 col-xs-6" style="margin-right: 48px; margin-top: 8px;">
+    <option value="JIRAMA" (click)="change('JIRAMA')">Jirama</option>
+    <option value="TAXIBROUSSE" (click)="change('TAXIBROUSSE')">Taxi brousse</option>
+    <option value="CANAL" (click)="change('CANAL')">Canal +</option>
+  </select>
+  <button class="btn btn-success btn-sm col-xl-2 col-md-2 col-sm-3 col-xs-6" style="margin-top:2px;"  (click)="exportAsXLSX()">
+    <i class="icon-cloud-download align-top bigger-125"></i>Export XLSX</button>
+  </nav>
+  <div class="responsive-table-line" style="margin:0px auto;max-width:100%;  ">
+    <table class="table table-bordered table-condensed table-body-center" >
+    <thead>
+      <tr class="theader">
+        <th colspan=3 style="color:#424242 ; padding-bottom: 2px;"><h5>Nombre de transaction : {{compte}}</h5></th>
+      </tr>
+      <tr>
+        <th  class="table-header" style="width: 16.5%;"><h5>Situation</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Journal</h5></th>
+      <th  class="table-header" style="width: 11.7%;"><h5>Date et heure</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Numero de piece</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Compte debit</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Compte credit</h5></th>
+      <th  class="table-header" style="width: 11.7%;"><h5>Reference facture</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Ref client</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Id agent ou id client</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Tiers</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Libelles</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Montant debit</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Montant credit</h5></th>
+      <th  class="table-header" style="width: 16.5%;"><h5>Periode</h5></th> 
+    </tr>
+    </thead>
+    <tbody>
+      <td data-title="Nombre de transaction " id="nb">{{compte}}</td>
+      <ng-container *ngFor="let h of historiquesArray1"> 
+        <tr id="tr1" *ngIf="h[0]=='Virement de la commission venant de l\'Agent Sipem à Sipem' && h[4]=='512200'"  style="background-color: #f5f5f5; ">
+          <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td> 
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>       
+      </tr>
+      <tr id="tr2" *ngIf="h[0]=='Virement de la commission venant du client à Sipem' && h[4]=='512200'"  style="background-color: #f5f5f5; ">
+          <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td> 
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>
+         <td ></td>       
+      </tr>
+          <tr *ngIf="h[0]!='Situation' && h[4]!='Compte debiteur'">
+            <td data-title="Situation">{{h[0]}}</td>
+            <td data-title="Journal">{{h[1]}}</td>
+            <td data-title="Date et heure">{{h[2]}}</td> 
+            <td data-title="Numero de piece">{{h[3]}}</td>
+            <td data-title="Compte debit">{{h[4]}}</td>
+            <td data-title="Compte credit" >{{h[5]}}</td>
+            <td data-title="Reference facture">{{h[6]}}</td>
+            <td data-title="Ref client">{{h[7]}}</td>
+            <td data-title="Id agent ou id client">{{h[8]}}</td>
+            <td data-title="Tiers" >{{h[9]}}</td>
+            <td data-title="Libelles" >{{h[10]}}</td>
+            <td data-title="Montant debit" >{{h[11]}}</td>
+            <td data-title="Montant credit">{{h[12]}}</td>
+            <td data-title="Periode">{{h[13]}}</td> 
+          </tr>
+      </ng-container>  
+     </tbody>
+    </table>
+    </div>

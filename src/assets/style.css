@@ -1,0 +1,29 @@
+/* font awesome*/
+@import "~font-awesome/css/font-awesome.css";
+td{
+    font-size: 12px;
+}
+td > .btn{
+    height: 1%;
+    font-size: 11px;
+    margin: 0 10px 0 0;
+    padding: 0 5px 0 5px;
+}
+.invalid-feedback{
+    color:red;
+}
+.privmenuitem > a.active{
+    color: black;
+    font-weight: 700;
+    background-color: white;
+}
+a.focus{
+    background-color: #FFF;
+    color: #1963aa;
+}
+#coords>input{
+    display: inline-block;
+}
+.form-control.ng-pristine.ng-invalid.ng-touched{
+    border: 2px solid red;
+}

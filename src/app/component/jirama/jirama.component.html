@@ -1,0 +1,56 @@
+<nav class="row" style="background-color: #e3f2fd; margin-bottom: 7px;">
+  <div class="col-sm-12 col-md-4 col-lg-3">
+    <a class="nav-item nav-link"  href="#" routerLink="/all">Transactions journaliéres Jirama</a>
+  </div>
+  <div class="col-sm-12 col-md-4 col-lg-3">
+    <!-- <button class="btn btn-success btn-sm  "  (click)="exportAsXLSX()">
+    <i class="icon-cloud-download align-top bigger-125"></i>Export XLSX</button> -->
+    <button class="btn btn-danger btn-sm"  (click)="toPdf()">
+      <i class="icon-cloud-download align-top bigger-125"></i>Imprimer</button>
+      <a class="btn btn-warning btn-sm " href="#" routerLink="/prelevement"><i class="icon-cloud-download align-top bigger-125"></i>Impression en format Jirama</a>
+  </div>
+  <div class="form-group"  [formGroup]="valider">
+    <input type="date"  formControlName="date_saisie">
+    <button class="btn btn-primary btn-sm " (click)="VerifierTransaction() ">Valider</button>
+  </div>
+
+</nav>
+<div  id="target_web">
+<div  class="responsive-table-line" style="margin:0px auto;max-width:100%;  ">
+  <table class="table table-bordered table-condensed table-body-center" >
+  <thead>
+    <tr class="theader">
+      <th style="color:#424242 ; padding-bottom: 2px;"><h5>Nombre de transaction :</h5></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <th  class="table-header" style="width: 16.5%;"><h5>Date</h5></th>
+        <th  class="table-header" style="width: 16.5%;"><h5>Reference</h5></th>
+        <th  class="table-header" style="width: 16.5%;"><h5>Facture</h5></th>
+        <th  class="table-header" style="width: 11.7%;"><h5>CodeClient</h5></th>
+        <th  class="table-header" style="text-align: right ;width: 10.5%;"><h5>Montant</h5></th>
+        <th  class="table-header" style="text-align: left ;width: 11.7%;"><h5>Beneficiaire</h5></th>
+        <th  class="table-header" style="text-align: left ;width: 11.7%;"><h5>Status</h5></th>
+    </tr>
+  </thead>
+  <tbody >
+    <ng-container *ngFor="let h of final">
+      <tr>
+        <td data-title="Date">{{h.facture.dateHour}}</td>
+        <td data-title="Reference">{{h.$key}}</td>
+        <td data-title="Facture">{{h.facture.invoiceRef }}</td>
+        <td data-title="CodeClient">{{h.facture.clientRef }}</td>
+        <td data-title="Montant" >{{h.facture.invoiceAmount }}</td>
+        <td data-title="Beneficiaire">{{h.facture.recipient }}</td>
+        <td data-title="Status">{{h.facture.status }}</td>
+     </tr>
+    </ng-container>
+   </tbody>
+  </table>
+  </div>
+</div>

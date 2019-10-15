@@ -1,0 +1,84 @@
+.navbar-brand {
+    padding: 5px;
+}
+#img1{
+    height: 73px; margin-top: -5px; margin-right:69px;
+}
+#img2{
+    height: 50px; margin-top: -5px; margin-left:69px ;
+}
+#img3{
+  height: 73px; 
+}
+#loginbox{
+    background-color: #bdbdbd;
+    border-radius: 10px 10px 10px 10px;
+    padding-bottom: 25px;
+    margin-top: 160px;
+    vertical-align: middle;
+}
+.theader{
+    background-color: #eceff1;
+}
+.tab{
+    margin-bottom: 7px;
+}
+.nav-list>li.active {
+    background-color: #fff;
+}
+a.active {
+    color: #438eb9;
+    font-weight: 600;
+}
+#but1{
+    margin-top: 1px;
+    margin-right: 2px;
+    height: 65%;
+    position: absolute;
+    right: 0;     
+}  
+#but2{
+  display: none;
+}
+#bo1{
+  display: none;
+}
+@media screen and (max-width: 511px) {
+  #bo1{
+    display: block;
+  }
+  #a1{
+    font-size: 20px;
+   }
+   #a2{
+    width: 30px;
+   }
+   #but2{
+     display: block;
+   }
+  #but1{
+    margin-top: 1px;
+    margin-right: 100px;
+    height: 65%;
+    position: relative;
+    text-align: center;
+  }
+  #text{
+   font-size: 24px;
+   height: auto;
+  }
+  #bout{display: none;
+  }
+  #bo{
+    font-size: 24px;
+    display: none;
+  }
+  #img1{
+    margin-right:40px;
+    text-align: center;
+  }
+  #img2{
+    margin-left:40px;
+    text-align: center;
+  }
+}

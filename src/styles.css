@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~assets/css/bootstrap.min.css";
+@import "~assets/css/font-awesome.min.css";
+.notification-lu{
+    background-color: #FFFFFF;
+  }
+  thead {
+    background-color: #266b9e;
+    color: azure;
+  }
+  
+  h4 {
+    font-weight: 700;
+  }
+  .hd-message-sn:hover .hd-message-sn:focus {
+    background-color:teal;
+    color: #FFFFFF;
+  }
+  /*Notifications*/
+  .hd-message-info>a:focus .hd-message-info>a:hover{
+    color: #f80b0b;
+    background : #266b9e;
+    background-color: #266b9e;
+    text-decoration: #fc0707;
+  }
+  .hd-message-info>a:hover{
+   color: #266b9e;
+   text-decoration: none;
+   background-color: #f80b0b;
+  }
+  /* based on angular-toastr css https://github.com/Foxandxss/angular-toastr/blob/cb508fe6801d6b288d3afc525bb40fee1b101650/dist/angular-toastr.css */
+  
+  /* position */
+  

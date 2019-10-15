@@ -1,0 +1,112 @@
+<div *ngIf="!connecte"  >
+    <ngx-ui-loader logoUrl="assets/logofintek.png" logoPosition="center-center" logoSize=100 style="margin-top:60px;">
+    </ngx-ui-loader>
+    <div class="container "  >
+    <div class="row" id="row1">
+      <div class="col-md-3"></div>
+    <div id="loginmodal" class="col-md-6"  style="text-align: center">
+      <div id="loginbox" class="animated rollIn" style="-webkit-box-shadow: 11px 10px 4px -4px rgba(0,0,0,0.67);
+      -moz-box-shadow: 11px 10px 4px -4px rgba(0,0,0,0.67); box-shadow: 11px 10px 4px -4px rgba(0,0,0,0.67); opacity: 0.1; background-color: #e0e0e0;">
+        <div >
+            <img  id="img1" src="assets/logo1.png">
+            <img  id="img2" src="assets/logofintek.png">
+            <h2 style="color:#283593" id="bo">Back Office Transaction
+          </h2>
+          <div class="space-2"></div>
+          <div id="login-banner" class="alert alert-block alert-success" style="display:none;">
+            <i class="icon icon-lock green" style="margin-right: 3px;"></i>
+            <span id="login-banner-txt"></span>
+          </div>
+          <div class="space-10"></div>
+          <form [formGroup]="this.loginService.form" (ngSubmit)="login()">
+            <div id="logindiv">
+            <div class="row">
+                <div class="col-xl-12 col-md-12 input-icons">
+              <label >
+                <span >
+                  <input formControlName="name"  placeholder="Utilisateur" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.name.errors}" required="required">
+                  <i class="icon-user" style=" position: absolute; margin-top:-25px; margin-left: 55px; opacity: 0.5; "></i>
+                </span>
+              </label>
+                </div>
+            </div>
+              <div class="invalid-feedback" *ngIf="submitted && formControls.name.errors && connectee">
+                Ce champ est obligatoire.
+              </div>
+            <div class="row">
+                <div class="col-xl-12 col-xl-12">
+              <label class="block clearfix">
+                <span>
+                  <input formControlName="password" type="password"  placeholder="Mot de passe" class="form-control" [ngClass]="{'is-invalid':submitted && formControls.password.errors}" required="required">
+                  <i class="icon-lock" style=" position: absolute; margin-top:-25px; margin-left: 55px; opacity: 0.5;"></i>
+                </span>
+              </label>
+                </div>
+            </div>
+              <div class="invalid-feedback" *ngIf="submitted && formControls.password.errors && connectee">
+                Ce champ est obligatoire.
+              </div>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="showSuccessMessage">
+              votre login ou mot de passe est incorrect !
+            </div>
+            <div class="space-6"></div>
+            <div class="space-6"></div>
+            <button type="submit" id="loginbutton"  class="btn btn-primary width-35 " [disabled]="this.loginService.form.invalid">
+              <i class="icon-key"></i>Connecter
+            </button>
+          </form>
+          <div class="alert alert-danger" *ngIf="showErrorMessage">
+             Votre login ou mot de passe est incorrect, Veuillez répéter ...<img id="img3" src="assets/choque.png">
+            </div>
+          <div id="loadingdiv" style="display: none;">
+            <h3 id="loadingbartxt">Initializing</h3>
+            <div id="loadingprogdiv" class="progress progress-striped active">
+              <div class="progress-bar" id="loadingprog" style="width: 100%;"></div>
+            </div>
+            <span id="loadingstat"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+    </div>
+  </div>
+<div *ngIf="connecte" style="margin-right:15px; margin-left:15px;">
+    <nav class="row" style="background-color: white; height: 48px; border-bottom: 4px solid #1976d2;">
+        <div class=" navbar navbar "  >
+          <div class="navbar-container" >
+            <div class="pull-left" style="  padding-bottom: -13px; height: 50px;"  id="bo">
+              <a  class="navbar-brand" id="a1" style="font-size: 28px; margin-top: -6px;" routerLink="/accueil">
+                <small>
+                  <img  id="a2" style="width:42px; margin-bottom: 13px" src="assets/logofintek.png">
+                  Back Office Transaction
+                </small>
+              </a>
+            </div>
+            <div class="pull-left" style="  padding-bottom: -13px; height: 50px;"  id="bo1">
+                <a  class="navbar-brand" id="a1" style="font-size: 28px; margin-top: -6px;" routerLink="/accueil">
+                  <small>
+                    <img  id="a2" style="width:42px; margin-bottom: 13px" src="assets/logofintek.png">
+                  </small>
+                </a>
+              </div>
+            <div  class="pull-right" id="bout" style="margin-top: 0px">
+                <button id="but1" class="btn btn-primary btn" (click)="logout()">Deconnexion</button>
+            </div>
+            <div  id="but2" class="pull-right" style="margin-top: 4px">
+                <a  class="navbar-brand" id="a1" style="font-size: 28px; margin-top: -6px;" href="#" (click)="logout()">
+                  <small>
+                    <img  id="a2" style="width:35px; margin-bottom: 13px" src="assets/deconnexion.png">
+                  </small>
+                </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <h2 id="text" style="text-align: center; color: #bdbdbd;">Historiques des transactions <span style=" font-size:30px"></span></h2>
+ <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

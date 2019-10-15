@@ -1,0 +1,74 @@
+<nav class="row" style="background-color: #e3f2fd; margin-bottom: 7px;">
+  <div class="col-md-2">
+    <div class="dropdown" style="position:relative;z-index:100;">
+      <button class="btn btn-default dropdown-toggle acti2" type="button" id="dropdownMenu1" style="border:none; background-color:#e3f2fd; color:mediumblue;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Gestion des dépôts
+      <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1"style="position:relative;z-index:100;">
+      <li><a class="nav-item nav-link" id="acti" href="#" routerLink="/all">Toutes les transactions</a></li>
+      <li><a class="nav-item nav-link" href="#" routerLink="/societe">Tri par societe</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/date">Tri par Date</a></li>
+      <li><a class="nav-item nav-link " href="#" routerLink="/ref">Tri par Reference</a></li>
+      </ul>
+      </div>
+  </div>
+</nav>
+<nav class="row" style="background-color: #eceff1; margin-right: 1px; margin-left: 1px; ">
+  <h6 class="col-xl-3 col-md-3 col-sm-3"> Min Dépot et commission</h6>
+</nav>
+<div class="container"  >
+    <div class="row" id="row1">
+      <div class="col-md-3"></div>
+<div id="loginmodal" class="col-md-6"  style="text-align: center">
+      <div id="loginbox"  class="animated rollIn" style="-webkit-box-shadow: 11px 10px 4px -4px rgba(0,0,0,0.67);
+      -moz-box-shadow: 11px 10px 4px -4px rgba(0,0,0,0.67); box-shadow: 11px 10px 4px -4px rgba(0,0,0,0.67); opacity: 0.1; background-color: #e0e0e0;">
+       <div>
+    <img  id="img2" style="width: 20%" src="assets/logofintek.png">
+    <h2 style="color:#283593" id="bo">
+  </h2>
+  <div class="space-2"></div>
+  <div id="login-banner" class="alert alert-block alert-success" style="display:none;">
+    <i class="icon icon-lock green" style="margin-right: 3px;"></i>
+    <span id="login-banner-txt"></span>
+  </div>
+<div class="responsive-table-line" style="margin: 0px auto; max-width:40%;  ">
+<div class="space-10"></div>
+<form #comsFintekForm="ngForm" (ngSubmit)="onSubmit(comsFintekForm)" >
+    <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="comsFintek.$key">
+  <div class="form-group">
+
+    <label>Dépôt minimum</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-dollar"></i>
+        </div>
+        <input class="form-control" name="depotmin" #depotmin="ngModel" [(ngModel)]="comsFintek.depotmin" placeholder="Dépôt minimum">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Commission</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+          <i class="fa fa-dollar"></i>
+        </div>
+        <input class="form-control" name="fraisTrasac" #fraisTrasac="ngModel" [(ngModel)]="comsFintek.fraisTrasac" placeholder="Commission">
+    </div>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-default" type="submit" [disabled]="!comsFintekForm.valid">
+      <i class="fa fa-floppy-o"></i>
+       Envoyer</button>
+    <button class="btn btn-default" type="button" (click)="resetForm(comsFintekForm)">
+      <i class="fa fa-repeat"></i>
+       Annuler</button>
+  </div>
+  <div class="space-10"></div>
+</form>
+	</div>
+</div>
+	</div>
+</div>
+  </div>
+</div>
+

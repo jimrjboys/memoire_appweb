@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Prélèvement</title>
+</head>
+<body style="margin-left: 100px;font-size: 26;font-style: bold;">
+   <button class="btn btn-danger btn-sm" (click)="toPdf()">Impression manuelle</button>
+<div id="target" >
+<img src="assets/logofintek.png" width="200px" height="200px" alt="Logo Fintek">
+<img src="assets/jirama.png"  width="200px" height="200px" style=" margin-left: 800px" alt="Logo Jirama">
+<div style="margin-left: 50px">
+  <ul style="list-style-type:none;">
+    <li>Relevé de vos operations</li>
+    <li >Compte: 02</li>
+    <li >Période: {{ date_now }}</li>
+    <li>Contact chez le client: DSI-DPSI JIRAMA</li>
+    <li>Coordonnées entreprise: 149 rue Rainandriamampandry Antananarivo</li>
+    <li>Chargé de déploiement JIRAMA:</li>
+  </ul>
+</div>
+<div style="margin-left: 100px">
+  <table>
+  <thead>
+  <tr>
+    <th class="table-header"  style="width: 16.5%;"><h5>Date</h5></th>
+    <th class="table-header"  style="width: 16.5%;"><h5>Reference</h5></th>
+    <th class="table-header"  style="width: 16.5%;"><h5>Facture</h5></th>
+    <th class="table-header"  style="width: 11.7%;"><h5>CodeClient</h5></th>
+    <th class="table-header"  style="width: 11.7%;"><h5>Client</h5></th>
+    <th class="table-header"  style="text-align: left ;width: 10.5%;"><h5>Montant</h5></th>
+    <th class="table-header"  style="text-align: right ;width: 10.5%;"><h5>Beneficiaire</h5></th>
+  </tr>
+ </thead>
+  <tbody>
+    <ng-container *ngFor="let h of thebest">
+      <tr>
+        <td data-title="Date">{{h.facture.dateHour}}</td>
+        <td data-title="Reference">238558512</td>
+        <td data-title="Facture">{{h.facture.invoiceRef }}</td>
+        <td data-title="CodeClient">{{h.facture.clientRef }}</td>
+        <td data-title="Client">0343403434</td>
+        <td data-title="Montant" >{{h.facture.invoiceAmount }}</td>
+        <td data-title="Beneficiaire">{{h.facture.recipient }}</td>
+      </tr>
+    </ng-container>
+   </tbody>
+  </table>
+</div>
+</div>
+</body>
+</html>
